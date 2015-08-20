@@ -7,16 +7,17 @@
 <body>
     <h1 align="center">a::comp</h1>
     <ul>
+    {% for story in stories %}
         <li>
-            <p style="text-transform: uppercase;"><a href="#">Title with some meaning</a></p>
-            <p>html, css, something, bla</p>
-            <p>20.09.15</p>
+            <p style="text-transform: uppercase;"><a href="/story/{{ story.id }}/">{{ story.title }}</a></p>
+            <p>{{ story.date }}</p>
+            <div style="#tag-list">
+                {% for tag in story.tag.all() %}
+                    <a href="/tag/{{ tag.id }}/{{ tag.name }}/">{{ tag.name }}</a>,
+                {% endfor %}
+            </div>
         </li>
-        <li>
-            <p style="text-transform: uppercase;"><a href="#">Second meaningful title</a></p>
-            <p>machine learning, psy, etc</p>
-            <p>20.09.15</p>
-        </li>
+    {% endfor %}
     </ul>
 </body>
 </html>
