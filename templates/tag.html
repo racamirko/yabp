@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{{ tag.name }}</title>
+</head>
+<body>
+    <h1>{{ tag.name }}</h1>
+    <ul>
+    {% for story in tag.story_set.all() %}
+        <li><a href="/story/{{ story.id }}/">{{ story.title }}</a></li>
+    {% endfor %}
+    </ul>
+</body>
+</html>
