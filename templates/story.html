@@ -1,10 +1,7 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>a:c::dev::{{ story.title }}</title>
-</head>
-<body>
+{% extends "template_base.html" %}
+{% block title %}story:: {{ story.title }}{% endblock %}
+
+{% block content %}
     <h1>{{ story.title }}</h1>
     <div style="#date">{{ story.date }}</div>
     <div style="#tag-list">
@@ -15,5 +12,4 @@
     <p>
         {{ story.body }}
     </p>
-</body>
-</html>
+{% endblock %}

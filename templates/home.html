@@ -1,10 +1,7 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>a::computer</title>
-</head>
-<body>
+{% extends "template_base.html" %}
+{% block title %}home{% endblock %}
+
+{% block content %}
     <h1 align="center">a::comp</h1>
     <ul>
     {% for story in stories %}
@@ -12,12 +9,10 @@
             <p style="text-transform: uppercase;"><a href="/story/{{ story.id }}/">{{ story.title }}</a></p>
             <p>{{ story.date }}</p>
             <div style="#tag-list">
-                {% for tag in story.tag.all() %}
+                {% for tag in story.tag.all()|sort(attribute="name") %}
                     <a href="/tag/{{ tag.id }}/{{ tag.name }}/">{{ tag.name }}</a>,
                 {% endfor %}
             </div>
         </li>
     {% endfor %}
-    </ul>
-</body>
-</html>
+{% endblock %}
