@@ -1,17 +1,35 @@
 <!DOCTYPE html>
-<html lang="en">
+<html class="no-js" lang="en">
 <head>
     <!-- <link rel="stylesheet" href="style.css" /> -->
     <title>::a:computer::{% block title %}{% endblock %}</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="static/css/foundation.css" />
+    <!-- <link rel="stylesheet" href="http://dhbhdrzi4tiry.cloudfront.net/cdn/sites/foundation.min.css"> -->
+
+    <link rel="stylesheet" href="static/foundation-icons/foundation-icons.css" />
+
+    <!-- <script src="static/js/vendor/modernizr.js"></script> -->
     {% block head %}
     {% endblock %}
 </head>
 <body>
-    <div id="content">{% block content %}{% endblock %}</div>
+    <!-- <div id="content"> -->
+    {% block content %}{% endblock %}
+    <!-- </div> -->
     <div id="footer">
+    	<hr>
         {% block footer %}
-        &copy; Copyright 2015 by <a href="http://analog.computer/">Mirko Raca</a>.
+        &copy; Copyright 2015 by <a href="http://analog.computer/">me</a>.
         {% endblock %}
     </div>
+
+<script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+<script src="http://dhbhdrzi4tiry.cloudfront.net/cdn/sites/foundation.js"></script>
+<script>
+      $(document).foundation();
+    </script>
+
 </body>
 </html>

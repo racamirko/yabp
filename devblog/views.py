@@ -1,8 +1,6 @@
 from django.shortcuts import render
 from models import *
 
-# Create your views here.
-
 
 def home(request):
     context = {'stories': Story.objects.order_by('-date')[:5]}
@@ -12,6 +10,7 @@ def home(request):
 def print_story(request, story_id):
     story = Story.objects.get(id=story_id)
     return render(request, 'story.html', context={'story': story})
+
 
 def show_tag(request, tag_id, tag_name):
     tag = Tag.objects.get(id=tag_id)

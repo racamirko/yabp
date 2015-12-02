@@ -2,18 +2,39 @@
 {% block title %}home{% endblock %}
 
 {% block content %}
-    <h1 align="center">a::comp</h1>
-    <img src="/static/sean_murphy.jpg"/>
-    <ul>
+
+    <div class="top-bar">
+    <div class="top-bar-left">
+    <ul class="menu">
+    <li class="menu-text">Blog</li>
+    <li><a href="#">One</a></li>
+    <li><a href="#">Two</a></li>
+    <li><a href="#">Three</a></li>
+    </ul>
+    </div>
+    </div>
+     
+    <div class="callout large primary">
+    <div class="row column text-center">
+    <h1><img src="static/img/logo.png"/>a::comp</h1>
+    </div>
+    </div>
+
+    <div class="row">
+        <h3>Web signature</h3>
+    </div>
+
+    <div class="row"><h3>Recent stories</h3></div>
+
+    <div class="row medium-8 large-7 columns">
     {% for story in stories %}
-        <li>
-            <p style="text-transform: uppercase;"><a href="/story/{{ story.id }}/">{{ story.title }}</a></p>
+        <div class="blog-post">
+            <p style="text-transform: uppercase;"> <i style="step fi-foot size-48"></i> <a href="/story/{{ story.id }}/">{{ story.title }}</a></p>
             <p>{{ story.date }}</p>
-            <div style="#tag-list">
                 {% for tag in story.tag.all()|sort(attribute="name") %}
                     <a href="/tag/{{ tag.id }}/{{ tag.name }}/">{{ tag.name }}</a>,
                 {% endfor %}
-            </div>
-        </li>
+        </div>
     {% endfor %}
+    </div>
 {% endblock %}
