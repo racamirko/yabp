@@ -32,38 +32,44 @@
             </p>
 
             <p>
-            This is a personal blog, created to localize my on-line persona and for putting up with various projects I hope I'll get to do one day. It's not a blog for you - it's a blog meant for me. That's the only way I'll get to write it. If you find the texts incorrect or valuable, let me know.
+            This is a personal blog, created to localize my on-line persona and for putting up with various projects I hope I'll get to do one day. It's not a blog for you - it's a blog meant for me. That's the only way I'll get to write it. If you find the texts incorrect or valuable, <a href="#">let me know</a>.
             </p>
             </div>
         </div>
     </div>
 
-    <div class="row">
+    <div class="row medium-8 large-7 end">
         <h3>Web signature</h3>
-        <div class="small-1 columns"><a target="_blank" href="https://www.linkedin.com/in/racamirko"> <i class="fi-social-linkedin size-48"></i> </a></div>
-        <div class="small-1 columns"><a target="_blank" href="http://github.com/racamirko"> <i class="fi-social-github size-48"></i> </a></div>
-        <div class="small-1 columns"><a target="_blank" href="https://scholar.google.ch/citations?user=AMsEOW8AAAAJ"> <i class="fi-lightbulb size-48"></i> </a></div>
-        <div class="small-1 columns"><a target="_blank" href="http://infoscience.epfl.ch/search?ln=en&p=raca"><i class="fi-book size-48"></i> </a></div>
         <div class="small-1 columns">&nbsp;</div>
-        <div class="small-1 columns"><a target="_blank" href="https://twitter.com/code_scrapping"> <i class="fi-social-twitter size-48"></i> </a></div>
-        <div class="small-1 columns"><a target="_blank" href="http://krichker.tumblr.com/"> <i class="fi-social-tumblr size-48"></i> </a></div>
+        <div class="small-1 columns"><a title="LinkedIn profile" target="_blank" href="https://www.linkedin.com/in/racamirko"> <i class="fi-social-linkedin size-48"></i> </a></div>
+        <div class="small-1 columns"><a title="GitHub" target="_blank" href="http://github.com/racamirko"> <i class="fi-social-github size-48"></i> </a></div>
+        <div class="small-1 columns"><a title="Google Scholar" target="_blank" href="https://scholar.google.ch/citations?user=AMsEOW8AAAAJ"> <i class="fi-lightbulb size-48"></i> </a></div>
+        <div class="small-1 columns"><a title="EPFL published papers" target="_blank" href="http://infoscience.epfl.ch/search?ln=en&p=raca"><i class="fi-book size-48"></i> </a></div>
         <div class="small-1 columns">&nbsp;</div>
-        <div class="small-1 columns"><a target="_blank" href="http://last.fm/user/srbox"> <i class="fi-social-lastfm size-48"></i> </a></div>
-        <div class="small-1 columns"><a target="_blank" href="https://www.goodreads.com/user/show/33353368-mirko"><i class="fi-bookmark size-48"></i> </a></div>
-        <div class="small-1 columns end"><a target="_blank" href="https://www.strava.com/athletes/9675718"><i class="fi-megaphone size-48"></i> </a></div>
+        <div class="small-1 columns">&nbsp;</div>
+        <div class="small-1 columns"><a title="Twitter account" target="_blank" href="https://twitter.com/code_scrapping"> <i class="fi-social-twitter size-48"></i> </a></div>
+        <div class="small-1 columns"><a title="LastFM music profile" target="_blank" href="http://last.fm/user/srbox"> <i class="fi-social-lastfm size-48"></i> </a></div>
+        <div class="small-1 columns"><a title="Goodreads reading profile" target="_blank" href="https://www.goodreads.com/user/show/33353368-mirko"><i class="fi-bookmark size-48"></i> </a></div>
+        <div class="small-1 columns"><a title="Running records" target="_blank" href="https://www.strava.com/athletes/9675718"><i class="fi-megaphone size-48"></i> </a></div>
+        <div class="small-1 columns end">&nbsp;</div>
     </div>
 
-    <div class="row"><h3>Recent stories</h3></div>
+    <div class="row medium-8 large-7 end"><h3>Recent stories</h3></div>
 
     <div class="row medium-8 large-7 columns">
     {% for story in stories %}
         <div class="blog-post">
-            <p style="text-transform: uppercase;"><a href="/story/{{ story.id }}/">{{ story.title }}</a></p>
-            <p>{{ story.date }}</p>
-                {% for tag in story.tag.all()|sort(attribute="name") %}
-                    <a href="/tag/{{ tag.id }}/{{ tag.name }}/">{{ tag.name }}</a>,
+            <h4><a href="/story/{{ story.id }}/">{{ story.title | title }}</a><small>{{ story.date }}</small></h4>
+                <p>
+                    {{ story.body|truncatewords:30  }}
+                </p>
+                <small>
+                {% for tag in story.tag.all %}
+                    <a href="/tag/{{ tag.id }}/{{ tag.name }}/">{{ tag.name }}</a>{% if not forloop.last %},{% endif %}
                 {% endfor %}
+                </small>
         </div>
+        <hr/>
     {% endfor %}
     </div>
 {% endblock %}
