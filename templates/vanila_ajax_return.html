@@ -1,0 +1,14 @@
+{% for story in stories %}
+<div class="blog-post">
+    <h4><a href="/story/{{ story.id }}/">{{ story.title | title }}</a><small>{{ story.date }}</small></h4>
+        <p>
+            {{ story.body|truncatewords:30  }}
+        </p>
+        <small>
+        {% for tag in story.tag.all %}
+            <a href="/tag/{{ tag.id }}/{{ tag.name }}/">{{ tag.name }}</a>{% if not forloop.last %},{% endif %}
+        {% endfor %}
+        </small>
+</div>
+<hr/>
+{% endfor %}

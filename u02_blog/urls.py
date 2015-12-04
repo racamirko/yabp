@@ -22,4 +22,5 @@ urlpatterns = [
     url(r'^$', views.home, name='home'),
     url(r'^story/(?P<story_id>[0-9]+)/$', views.print_story, name='story'),
     url(r'^tag/(?P<tag_id>[0-9]+)/(?P<tag_name>.+)$', views.show_tag, name='tag'),
+    url(r'^ajax/ajax_get_more_stories/(?P<story_offset>[0-9]+)/(?P<num_stories>[0-9]+)/$', views.ajax_get_more_stories, name='story_ajax'),
 ]
