@@ -1,15 +1,19 @@
-{% extends "template_base.html" %}
+{% extends "small_title_template.html" %}
 {% block title %}story:: {{ story.title }}{% endblock %}
 
-{% block content %}
-    <h1>{{ story.title }}</h1>
-    <div style="#date">{{ story.date }}</div>
-    <div style="#tag-list">
-        {% for tag in story.tag.all() %}
-            <a href="/tag/{{ tag.id }}/{{ tag.name }}/">{{ tag.name }}</a>,
-        {% endfor %}
+{% block text_content %}
+    <div class="row end"> <h2>{{ story.title }}</h2></div>
+    <div class="row">
+        <div class="columns large-1 small"> {{ story.date }}</div>
+        <div class="columns large-11 small end">
+            {% for tag in story.tag.all %}
+                <a href="/tag/{{ tag.id }}/{{ tag.name }}/">{{ tag.name }}</a>,
+            {% endfor %}
+        </div>
     </div>
-    <p>
-        {{ story.body }}
-    </p>
+    <div class="row">
+        <p>
+            {{ story.body }}
+        </p>
+    </div>
 {% endblock %}

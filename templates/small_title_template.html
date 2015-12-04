@@ -1,0 +1,21 @@
+{% extends "template_base.html" %}
+
+{% block content %}
+    <div class="top-bar">
+    <div class="top-bar-left">
+    	<a href="/"> <img height="30" width="30" src="/static/img/logo.png"/> Analog computer:: </a>
+<!--     <ul class="menu">
+    <li class="menu-text"><a href="/">Blog</a></li>
+    <li><a href="#">Projects</a></li>
+    <li><a href="#">Contact</a></li>
+    </ul>
+ -->    </div>
+    </div>
+    
+    <div class="row"> 
+	{% block text_content %}
+
+	{% endblock %}
+	</div>
+
+{% endblock %}

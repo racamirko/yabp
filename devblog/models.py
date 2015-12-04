@@ -19,7 +19,7 @@ class Story(models.Model):
     tag = models.ManyToManyField(Tag)
 
     def __str__(self):
-        return "Story: "+self.title
+        return "Story: "+self.title[0:min(len(self.title), 20)]
 
 
 def __auto_populate(num_of_stories=10, num_of_tags=10):
