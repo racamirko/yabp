@@ -32,7 +32,7 @@
             </p>
 
             <p>
-            This is a personal blog, created to localize my on-line persona and for putting up with various projects I hope I'll get to do one day. It's not a blog for you - it's a blog meant for me. That's the only way I'll get to write it. If you find the texts incorrect or valuable, <a href="#">let me know</a>.
+            This is a personal blog, created to localize my on-line persona and for putting up with various projects I hope I'll get to do one day. If you find the texts incorrect or valuable, <a href="#">let me know</a>.
             </p>
             </div>
         </div>
@@ -59,7 +59,7 @@
     <div id="blog_posts" class="row medium-8 large-7 columns end">
     {% for story in stories %}
         <div class="blog-post">
-            <h4><a href="/story/{{ story.id }}/">{{ story.title | title }}</a><small>{{ story.date }}</small></h4>
+            <h4><a href="/story/{{ story.id }}/">{{ story.title | title }}</a> <small>{{ story.date | date }}</small></h4>
                 <p>
                     {{ story.body|truncatewords:30  }}
                 </p>
