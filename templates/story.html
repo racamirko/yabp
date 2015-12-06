@@ -4,8 +4,8 @@
 {% block text_content %}
     <div class="row end"> <h2>{{ story.title }}</h2></div>
     <div class="row">
-        <div class="columns large-1 small"> {{ story.date }}</div>
-        <div class="columns large-11 small end">
+        <div class="columns large-3 small"> {{ story.date }}</div>
+        <div class="columns large-9 small end">
             {% for tag in story.tag.all %}
                 <a href="/tag/{{ tag.id }}/{{ tag.name }}/">{{ tag.name }}</a>,
             {% endfor %}

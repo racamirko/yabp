@@ -63,15 +63,16 @@
                 <p>
                     {{ story.body|truncatewords:30  }}
                 </p>
-                <small>
+                &nbsp;
+                <small class="story_tags">
                 {% for tag in story.tag.all %}
                     <a href="/tag/{{ tag.id }}/{{ tag.name }}/">{{ tag.name }}</a>{% if not forloop.last %},{% endif %}
                 {% endfor %}
                 </small>
         </div>
-        <hr/>
     {% endfor %}
     </div>
 
     <script src="/static/js/inf_scroll_home.js"/>
+    <script src="/static/js/show_tags.js"/>
 {% endblock %}
