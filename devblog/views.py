@@ -1,4 +1,5 @@
 from django.shortcuts import render
+from django.contrib.auth import authenticate, login
 from models import *
 
 
@@ -19,3 +20,12 @@ def print_story(request, story_id):
 def show_tag(request, tag_id, tag_name):
     tag = Tag.objects.get(id=tag_id)
     return render(request, 'tag.html', context={'tag':tag})
+
+def login_form(request):
+    return render(request, 'login_form.html')
+
+def login_procedure(request):
+    pass
+
+def logout_procedure(request):
+    pass

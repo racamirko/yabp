@@ -1,0 +1,43 @@
+{% extends "small_title_template.html" %}
+
+{% block head %}
+	<style type="text/css">
+		body {
+		  background: #F0F0F3;
+		}
+		.login-box {
+		  background: #fff;
+		  border: 1px solid #ddd; 
+		  margin: 100px 0;
+		  padding: 40px 20px 0 20px;
+		}
+	</style>
+{% endblock %}
+
+{% block text_content %}
+	<div class="large-3 large-centered columns">
+	  <div class="login-box">
+	  <div class="row">
+	  <div class="large-12 columns">
+	    <form >
+	       <div class="row">
+	         <div class="large-12 columns">
+	             <input type="text" name="username" placeholder="Username" />
+	         </div>
+	       </div>
+	      <div class="row">
+	         <div class="large-12 columns">
+	             <input type="password" name="password" placeholder="Password" />
+	         </div>
+	      </div>
+	      <div class="row">
+	        <div class="large-12 large-centered columns">
+	          <input type="submit" class="button expand" value="Log In"/>
+	        </div>
+	      </div>
+	    </form>
+	  </div>
+	</div>
+	</div>
+	</div>
+{% endblock %}

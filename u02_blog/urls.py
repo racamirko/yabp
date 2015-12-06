@@ -23,4 +23,7 @@ urlpatterns = [
     url(r'^story/(?P<story_id>[0-9]+)/$', views.print_story, name='story'),
     url(r'^tag/(?P<tag_id>[0-9]+)/(?P<tag_name>.+)$', views.show_tag, name='tag'),
     url(r'^ajax/ajax_get_more_stories/(?P<story_offset>[0-9]+)/(?P<num_stories>[0-9]+)/$', views.ajax_get_more_stories, name='story_ajax'),
+    url(r'^vrata/$', views.login_form, name='login_form'),
+    url(r'^kljuc_u_bravu/$', views.login_procedure, name='login_procedure'),
+    url(r'^aj_zdravo/$', views.logout_procedure, name='logout_procedure'),
 ]
