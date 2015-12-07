@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.contrib.auth import authenticate, login
 from models import *
 
@@ -25,7 +25,18 @@ def login_form(request):
     return render(request, 'login_form.html')
 
 def login_procedure(request):
-    pass
+    username = request.POST['username']
+    password = request.POST['password']
+    user = authenticate(username=username, password=password)
+    if user is not None:
+        if user.is_active:
+            login(request, user)
+            return redirect("/") # for now
+        else:
+            return redirect("/vrata/?err=1")
+    else:
+        return redirect("/vrata/?err=2")
 
 def logout_procedure(request):
     pass
+    # if request.user.is_authenticated():

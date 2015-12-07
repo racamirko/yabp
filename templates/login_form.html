@@ -19,7 +19,7 @@
 	  <div class="login-box">
 	  <div class="row">
 	  <div class="large-12 columns">
-	    <form >
+	    <form method="POST" action="/kljuc_u_bravu/">
 	       <div class="row">
 	         <div class="large-12 columns">
 	             <input type="text" name="username" placeholder="Username" />
@@ -39,5 +39,12 @@
 	  </div>
 	</div>
 	</div>
+	</div>
+
+	<div class="row">
+		<div class="small-6 small-centered columns">
+			<div id="error_message_box" class="alert callout">
+			</div>
+		</div>
 	</div>
 {% endblock %}
