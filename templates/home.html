@@ -19,6 +19,15 @@
     <li><a href="#">Contact</a></li>
     </ul>
     </div>
+    {% if user.is_authenticated %}
+    <div class="top-bar-right">
+        <ul class="menu">
+        <li class="menu-text">Hi, {{ user.username }}</li>
+        <li><a href="#">Actions</a></li>
+        <li><a href="/aj_zdravo/">Log out</a></li>
+        </ul>
+    </div>
+    {% endif %}
     </div>
      
     <div class="callout large primary">
@@ -37,6 +46,14 @@
             </div>
         </div>
     </div>
+
+    {% if messages %}
+        <ul class="messages">
+            {% for message in messages %}
+            <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+            {% endfor %}
+        </ul>
+    {% endif %}
 
     <div class="row medium-8 large-7 end">
         <h3>Web signature</h3>

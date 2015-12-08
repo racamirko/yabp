@@ -1,5 +1,6 @@
 from django.shortcuts import render, redirect
-from django.contrib.auth import authenticate, login
+from django.contrib.auth import authenticate, login, logout
+from django.contrib import messages
 from models import *
 
 
@@ -22,6 +23,8 @@ def show_tag(request, tag_id, tag_name):
     return render(request, 'tag.html', context={'tag':tag})
 
 def login_form(request):
+    if request.user.is_authenticated():
+        return redirect("/") # for now
     return render(request, 'login_form.html')
 
 def login_procedure(request):
@@ -33,10 +36,14 @@ def login_procedure(request):
             login(request, user)
             return redirect("/") # for now
         else:
-            return redirect("/vrata/?err=1")
+            messages.add_message(request, messages.ERROR, "Already loged in.")
+            return redirect("/vrata/")
     else:
-        return redirect("/vrata/?err=2")
+        messages.add_message(request, messages.ERROR, "Wrong username / password")
+        return redirect("/vrata/")
 
 def logout_procedure(request):
-    pass
-    # if request.user.is_authenticated():
+    if request.user.is_authenticated():
+        logout(request)
+    messages.add_message(request, messages.INFO, "You have been loged out.")
+    return redirect("/")

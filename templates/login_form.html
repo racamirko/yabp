@@ -20,6 +20,7 @@
 	  <div class="row">
 	  <div class="large-12 columns">
 	    <form method="POST" action="/kljuc_u_bravu/">
+	       {% csrf_token %}
 	       <div class="row">
 	         <div class="large-12 columns">
 	             <input type="text" name="username" placeholder="Username" />
@@ -41,10 +42,18 @@
 	</div>
 	</div>
 
+	{% if messages %}
 	<div class="row">
 		<div class="small-6 small-centered columns">
 			<div id="error_message_box" class="alert callout">
+			<ul>
+				{% for message in messages %}
+				    <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+			    {% endfor %}
+		    </ul>
 			</div>
 		</div>
 	</div>
+	{% endif %}
+
 {% endblock %}
