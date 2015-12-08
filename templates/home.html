@@ -13,18 +13,32 @@
 
     <div class="top-bar">
     <div class="top-bar-left">
-    <ul class="menu">
-    <li class="menu-text">Blog</li>
-    <li><a href="#">Projects</a></li>
-    <li><a href="#">Contact</a></li>
+    <ul class="dropdown menu">
+        <li class="menu-text">Blog</li>
+        <li class="has-submenu" data-dropdown-menu>
+            <a href="#">Projects</a>
+            <ul class="submenu menu vertical" data-submenu>
+              <li><a href="#">One</a></li>
+              <li><a href="#">Two</a></li>
+              <li><a href="#">Three</a></li>
+            </ul>
+          </li>
+        <li><a href="#">Contact</a></li>
     </ul>
     </div>
+
     {% if user.is_authenticated %}
     <div class="top-bar-right">
-        <ul class="menu">
-        <li class="menu-text">Hi, {{ user.username }}</li>
-        <li><a href="#">Actions</a></li>
-        <li><a href="/aj_zdravo/">Log out</a></li>
+        <ul class="dropdown menu" data-dropdown-menu>
+            <li class="menu-text">Hi, {{ user.username }}</li>
+            <li class="has-submenu">
+                <a href="#">Actions</a>
+                <ul class="submenu menu vertical">
+                    <li><a href="/actions/new_story/">New story</a></li>
+                    <li><a href="#">Some other shit</a></li>
+                </ul>
+            </li>
+            <li><a href="/aj_zdravo/">Log out</a></li>
         </ul>
     </div>
     {% endif %}
@@ -48,11 +62,17 @@
     </div>
 
     {% if messages %}
-        <ul class="messages">
-            {% for message in messages %}
-            <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
-            {% endfor %}
-        </ul>
+    <div class="row">
+        <div class="small-6 small-centered columns">
+        <div data-alert class="callout success">
+            <ul>
+                {% for message in messages %}
+                <li>{{ message }}</li>
+                {% endfor %}
+            </ul>
+        </div>
+        </div>
+    </div>
     {% endif %}
 
     <div class="row medium-8 large-7 end">

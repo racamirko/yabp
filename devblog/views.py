@@ -24,7 +24,8 @@ def show_tag(request, tag_id, tag_name):
 
 def login_form(request):
     if request.user.is_authenticated():
-        return redirect("/") # for now
+        messages.add_message(request, messages.INFO, "Already loged in, relax")
+        return redirect("/")
     return render(request, 'login_form.html')
 
 def login_procedure(request):
@@ -34,6 +35,7 @@ def login_procedure(request):
     if user is not None:
         if user.is_active:
             login(request, user)
+            messages.add_message(request, messages.INFO, "Logged in")
             return redirect("/") # for now
         else:
             messages.add_message(request, messages.ERROR, "Already loged in.")
