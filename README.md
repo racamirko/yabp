@@ -6,8 +6,8 @@ No, seriously, there's nothing new here. I just needed a coding practice to refr
 Tools
 -----
 
-[Django](http://djangoproject.com)
-[Foundation](http://foundation.zurb.com)
-[jQuery](http://jquery.com)
+- [Django](http://djangoproject.com)
+- [Foundation](http://foundation.zurb.com)
+- [jQuery](http://jquery.com)
 
 ... there'll be more.
