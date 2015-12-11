@@ -2,7 +2,7 @@
 {% block title %}home{% endblock %}
 
 {% block head %}
-
+    <script src="/static/js/inf_scroll_home.js"> </script>
     <style>
       .size-48 { font-size: 48px; }
     </style>
@@ -12,36 +12,36 @@
 {% block content %}
 
     <div class="top-bar">
-    <div class="top-bar-left">
-    <ul class="dropdown menu">
-        <li class="menu-text">Blog</li>
-        <li class="has-submenu" data-dropdown-menu>
-            <a href="#">Projects</a>
-            <ul class="submenu menu vertical" data-submenu>
-              <li><a href="#">One</a></li>
-              <li><a href="#">Two</a></li>
-              <li><a href="#">Three</a></li>
+        <div class="top-bar-left">
+            <ul class="dropdown vertical medium-horizontal menu" data-dropdown-menu>
+                <li class="menu-text">Blog</li>
+                <li class="has-submenu">
+                    <a href="#">Projects</a>
+                    <ul class="submenu menu vertical" data-submenu>
+                      <li><a href="#">One</a></li>
+                      <li><a href="#">Two</a></li>
+                      <li><a href="#">Three</a></li>
+                    </ul>
+                  </li>
+                <li><a href="#">Contact</a></li>
             </ul>
-          </li>
-        <li><a href="#">Contact</a></li>
-    </ul>
-    </div>
+        </div>
 
-    {% if user.is_authenticated %}
-    <div class="top-bar-right">
-        <ul class="dropdown menu" data-dropdown-menu>
-            <li class="menu-text">Hi, {{ user.username }}</li>
-            <li class="has-submenu">
-                <a href="#">Actions</a>
-                <ul class="submenu menu vertical">
-                    <li><a href="/actions/new_story/">New story</a></li>
-                    <li><a href="#">Some other shit</a></li>
-                </ul>
-            </li>
-            <li><a href="/aj_zdravo/">Log out</a></li>
-        </ul>
-    </div>
-    {% endif %}
+        {% if user.is_authenticated %}
+        <div class="top-bar-right">
+            <ul class="dropdown menu" data-dropdown-menu>
+                <li class="menu-text">Hi, {{ user.username }}</li>
+                <li class="has-submenu">
+                    <a href="#">Actions</a>
+                    <ul class="submenu menu vertical">
+                        <li><a href="/actions/new_story/">New story</a></li>
+                        <li><a href="#">Some other shit</a></li>
+                    </ul>
+                </li>
+                <li><a href="/aj_zdravo/">Log out</a></li>
+            </ul>
+        </div>
+        {% endif %}
     </div>
      
     <div class="callout large primary">
@@ -109,6 +109,4 @@
     {% endfor %}
     </div>
 
-    <script src="/static/js/inf_scroll_home.js"/>
-    <script src="/static/js/show_tags.js"/>
 {% endblock %}
