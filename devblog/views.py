@@ -4,6 +4,7 @@ from django.contrib import messages
 from models import *
 
 
+
 def home(request):
     context = {'stories': Story.objects.order_by('-date')[:5]}
     return render(request, 'home.html', context)
@@ -49,3 +50,4 @@ def logout_procedure(request):
         logout(request)
     messages.add_message(request, messages.INFO, "You have been loged out.")
     return redirect("/")
+
