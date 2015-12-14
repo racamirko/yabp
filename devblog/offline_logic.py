@@ -1,11 +1,19 @@
 import markdown as md
 import os
+import shutil
 from os.path import join, exists
+import pymdownx
 
 from models import *
 
 PATH_TO_TEXTS = '/home/raca/tmp/blog_texts'
+IMG_DESTINATION = '/home/raca/projects/u02_blog/static/img/'
 
+
+def is_image(filename):
+	img_exts = ['jpg', 'png', 'bmp', 'jpeg']
+	_, ext = os.path.splitext(filename)
+	return ext.lower() in img_exts
 
 def get_meta_data(filename):
 	hnd_in = open(filename)
@@ -21,23 +29,29 @@ def get_meta_data(filename):
 	return title, tags
 
 def process_new_folder(folder_path):
-	full_text = []
+	global IMG_DESTINATION
+	raw_text = []
 	title = ''
 	story_tags = []
+	img_names = []
 	for _, _, files in os.walk(folder_path):
 		files.sort()
 		for f_name in files:
 			print("Processing: %s" % f_name)
 			if f_name == '00_meta.txt':
 				title, story_tags = get_meta_data(join(folder_path, f_name))
+			elif is_image(f_name):
+				shutil.copy(join(folder_path, f_name), join(IMG_DESTINATION, f_name))
+				img_names.append(f_name)
 			else:
 				hnd_in = open(join(folder_path, f_name))
 				## TODO: expand MD processing here
-				full_text.append(md.markdown(''.join(hnd_in.readlines())))
+				raw_text.append(''.join(hnd_in.readlines()))
 				hnd_in.close()
-	whole_text = ''.join(full_text)
-	print("I would add:")
-	print(whole_text)
+	# add the image extension and sections
+	whole_text = md.markdown(''.join(raw_text),
+							extensions=['markdown.extensions.codehilite', 'pymdownx.github', 'pymdownx.smartsymbols',
+							'markdown.extensions.toc', 'markdown.extensions.nl2br'])
 	# ORM
 	tmp_story = Story(title=title, body=whole_text)
 	tmp_story.save()
