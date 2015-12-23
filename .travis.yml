@@ -1,6 +1,7 @@
 language: python
 install:
   - pip install -q Django==1.8.7
+  - pip install -q markdown
 python:
   - "2.7"
   # - "3.4"
