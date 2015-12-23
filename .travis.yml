@@ -3,7 +3,9 @@ install:
   - pip install -q Django==1.8.7
 python:
   - "2.7"
-  - "3.4"
-script: nosetests
+  # - "3.4"
+script:
+  - nosetests
+  - python manage.py test
 env:
-  - DJANGO_VERSION=1.8.7
+  - DJANGO=1.8.7 DJANGO_SETTINGS_MODULE="u02_blog.settings"
