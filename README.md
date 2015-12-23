@@ -1,4 +1,4 @@
-Yet Another Blog Platform
+Yet Another Blog Platform [![Build Status](https://travis-ci.org/racamirko/yabp.svg?branch=master)](https://travis-ci.org/racamirko/yabp)
 =========================
 
 No, seriously, there's nothing new here. I just needed a coding practice to refresh my knowledge of the web stack.
