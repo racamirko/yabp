@@ -1,7 +1,6 @@
 language: python
 install:
   - pip install -q Django==1.8.7
-  - python setup.py -q install
 python:
   - "2.7"
   - "3.4"
