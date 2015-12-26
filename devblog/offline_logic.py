@@ -11,7 +11,7 @@ IMG_DESTINATION = '/home/raca/projects/u02_blog/static/img/'
 
 
 def is_image(filename):
-	img_exts = ['jpg', 'png', 'bmp', 'jpeg']
+	img_exts = ['.jpg', '.png', '.bmp', '.jpeg']
 	_, ext = os.path.splitext(filename)
 	return ext.lower() in img_exts
 
