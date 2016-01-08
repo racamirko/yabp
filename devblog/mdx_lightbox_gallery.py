@@ -20,29 +20,45 @@ Example syntax usage:
 
 copyright @2015 Mirko Raca <mirko@analog.computer>
 
+Resources:
+    https://pythonhosted.org/Markdown/extensions/api.html
+    https://pythonhosted.org/Markdown/extensions/api.html#integrating_into_markdown
+
+    Stopped at trying to find out what's the md.match object and etree output
+
 """
 
 
 # from __future__ import absolute_import
 # from __future__ import unicode_literals
 import markdown
-from markdown import Extension
-from markdown.preprocessors import Preprocessor
+# from markdown import Extension
+# from markdown.preprocessors import Preprocessor
 from markdown.inlinepatterns import Pattern
+from markdown.util import etree
 import re
 
 
 SINGLE_IMG_RE = r'[!]{2}(\[(?P<img_index>\d+?)(?P<alt_text>\:.+?)?\])+'
 
-class LighthouseExtension(Extension):
+class LighthouseExtension(Pattern):
     """
         !![1:alt_text] individual images
         !![2:alt_text][3][5] gallery of several images with optional titles
     """
 
-    def __init__(self, config):
+    def __init__(self, mapping):
+        self.mapping = mapping
+
+    def getCompiledRegExp():
+        global SINGLE_IMG_RE
+        return re.compile(SINGLE_IMG_RE)
+
+    def handleMatch(m):
+        # assert( isinstance(m, ) )
         pass
 
 
-def makeExtension(configs=None):
-    return LighthouseExtension(configs)
+
+# def makeExtension(configs=None):
+#     return LighthouseExtension(configs)
