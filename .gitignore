@@ -3,3 +3,7 @@ static/*
 db.sqlite3
 .idea/*
 node_modules/*
+bin/*
+include/*
+lib/*
+local/*

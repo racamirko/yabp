@@ -9,32 +9,40 @@ the web server).
 
 Example syntax usage:
 
-Single image
-  !![1:text for the image]
+    Single image
+      !![1:text for the image]
 
-Gallery
-  !![1:note for the image][2:second image][3][4][5][6:again with notes]
+    Gallery
+      !![1:note for the image][2:second image][3][4][5][6:again with notes]
 
-Gallery for a reange of images
-  !![1]...[20]
+    Gallery for a reange of images
+      !![1]...[20]
 
 copyright @2015 Mirko Raca <mirko@analog.computer>
+
 """
 
 
-from __future__ import absolute_import
-from __future__ import unicode_literals
+# from __future__ import absolute_import
+# from __future__ import unicode_literals
 import markdown
 from markdown import Extension
 from markdown.preprocessors import Preprocessor
 from markdown.inlinepatterns import Pattern
+import re
 
 
 SINGLE_IMG_RE = r'[!]{2}(\[(?P<img_index>\d+?)(?P<alt_text>\:.+?)?\])+'
 
 class LighthouseExtension(Extension):
     """
-        [img:1] individual images
-        [gallery:4-19] a gallery is created with the python array handling rules
+        !![1:alt_text] individual images
+        !![2:alt_text][3][5] gallery of several images with optional titles
     """
 
+    def __init__(self, config):
+        pass
+
+
+def makeExtension(configs=None):
+    return LighthouseExtension(configs)
